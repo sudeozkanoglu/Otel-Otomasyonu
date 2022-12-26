@@ -78,7 +78,7 @@ namespace odev
                     NpgsqlCommand command3 = new NpgsqlCommand("INSERT INTO \"kadroluCalisan\"(\"calisanNo\",\"kadroluTC\",\"maas\") VALUES (@k1,@k2,@k3)", baglanti);
                     command3.Parameters.AddWithValue("@k1", calisanNumara);
                     command3.Parameters.AddWithValue("@k2", txtTC.Text);
-                    command3.Parameters.AddWithValue("@k3", int.Parse(txtMaas.Text));
+                    command3.Parameters.AddWithValue("@k3", double.Parse(txtMaas.Text));
                     command3.ExecuteNonQuery();
                 }
                 else

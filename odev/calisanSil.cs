@@ -123,11 +123,11 @@ namespace odev
             }
 
             baglanti.Open();
-            NpgsqlCommand command8 = new NpgsqlCommand("SELECT \"musteriNo\" FROM \"personelYakini\" WHERE \"calisanNo\"='" + int.Parse(txtCalNo.Text) + "'", baglanti);
+            NpgsqlCommand command8 = new NpgsqlCommand("SELECT \"calisanNo\" FROM \"calisan\" WHERE \"calisanNo\"='" + int.Parse(txtCalNo.Text) + "'", baglanti);
             NpgsqlDataReader dataReader5 = command8.ExecuteReader();
             while(dataReader5.Read())
             {
-                musteriNo = int.Parse(dataReader5["musteriNo"].ToString());
+                musteriNo = int.Parse(dataReader5["calisanNo"].ToString());
             }
             baglanti.Close();
 
@@ -135,12 +135,6 @@ namespace odev
             NpgsqlCommand command12 = new NpgsqlCommand("DELETE FROM \"personelYakini\" WHERE \"calisanNo\"=(@v1)" , baglanti);
             command12.Parameters.AddWithValue("@v1", int.Parse(txtCalNo.Text));
             command12.ExecuteNonQuery();
-            baglanti.Close();
-            
-            baglanti.Open();
-            NpgsqlCommand command10 = new NpgsqlCommand("DELETE FROM \"etkinlikCalisan\" WHERE \"calisanNo\"=(@z1)", baglanti);
-            command10.Parameters.AddWithValue("@z1", int.Parse(txtCalNo.Text));
-            command10.ExecuteNonQuery();
             baglanti.Close();
 
             baglanti.Open();

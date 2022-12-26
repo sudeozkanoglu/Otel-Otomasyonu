@@ -202,6 +202,7 @@ namespace odev
                     command4.Parameters.AddWithValue("@k7", cmbDepartman.Text);
                     command4.Parameters.AddWithValue("@k8", dtpIseGiris.Value);
                     command4.Parameters.AddWithValue("@k9", 1);
+                    baglanti.Close();
 
                     baglanti.Open();
                     NpgsqlCommand command22 = new NpgsqlCommand("UPDATE \"iletisimBilgileri\" SET \"telefonNo\"=@h1,\"adres\"=@h2,\"il\"=@h3,\"ilce\"=@h4,\"postaKodu\"=@h5 WHERE \"calisanNo\"='" + int.Parse(txtCalNo.Text) + "'", baglanti);
@@ -217,7 +218,7 @@ namespace odev
                     NpgsqlCommand command23 = new NpgsqlCommand("UPDATE \"sezonlukCalisan\" SET \"calisanNo\"=@e1,\"sezonlukTC\"=@e2,\"maas\"=@e3, \"sezonTuru\"=@e4 WHERE \"calisanNo\"='" + int.Parse(txtCalNo.Text) + "'", baglanti);
                     command23.Parameters.AddWithValue("@e1", int.Parse(txtCalNo.Text));
                     command23.Parameters.AddWithValue("@e2", txtTC.Text);
-                    command23.Parameters.AddWithValue("@e3", txtMaas.Text);
+                    command23.Parameters.AddWithValue("@e3", double.Parse(txtMaas.Text));
                     command23.Parameters.AddWithValue("@e4", cmbSezon.Text);
                     command23.ExecuteNonQuery();
                     baglanti.Close();
